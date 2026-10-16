@@ -1,0 +1,7 @@
+.env
+node_modules
+.DS_Store
+key.json
+*-firebase-adminsdk-*.json
+firebase-debug.log
+firestore-debug.log

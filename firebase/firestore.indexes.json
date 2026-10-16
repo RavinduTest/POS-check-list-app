@@ -1,0 +1,14 @@
+{
+  "indexes": [
+    { "collectionGroup": "records", "queryScope": "COLLECTION", "fields": [
+      { "fieldPath": "technicianId", "order": "ASCENDING" },
+      { "fieldPath": "createdAt", "order": "DESCENDING" } ] },
+    { "collectionGroup": "records", "queryScope": "COLLECTION", "fields": [
+      { "fieldPath": "status", "order": "ASCENDING" },
+      { "fieldPath": "submittedAt", "order": "ASCENDING" } ] },
+    { "collectionGroup": "records", "queryScope": "COLLECTION", "fields": [
+      { "fieldPath": "deleted", "order": "ASCENDING" },
+      { "fieldPath": "createdAt", "order": "DESCENDING" } ] }
+  ],
+  "fieldOverrides": []
+}

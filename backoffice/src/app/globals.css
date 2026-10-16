@@ -1,0 +1,72 @@
+:root { --primary:#1E73BE; --navy:#0B2A4A; --bg:#f4f6fa; --surface:#fff; --text:#16202e; --muted:#667085; --border:#e1e6ee; --ok:#1a8f4c; --warn:#c77700; --bad:#c62828; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0e1522; --surface:#172033; --text:#e8edf5; --muted:#93a0b5; --border:#2a3550; --primary:#4a9be0; } }
+* { box-sizing: border-box; }
+body { margin:0; font-family: Inter, system-ui, sans-serif; background:var(--bg); color:var(--text); font-size:14px; }
+a { color:var(--primary); text-decoration:none; }
+.shell { display:flex; min-height:100vh; }
+.side { width:230px; background:var(--navy); color:#fff; padding:16px 10px; display:flex; flex-direction:column; gap:4px; position:sticky; top:0; height:100vh; }
+.side.collapsed { width:64px; } .side.collapsed .lbl { display:none; }
+.side a { color:#cfe0f3; padding:10px 12px; border-radius:8px; display:flex; gap:10px; }
+.side a.active, .side a:hover { background:var(--primary); color:#fff; }
+.brand { font-weight:700; font-size:18px; padding:8px 12px 16px; }
+.main { flex:1; min-width:0; }
+.top { display:flex; gap:12px; align-items:center; padding:12px 24px; background:var(--surface); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:5; }
+.top input { flex:1; max-width:480px; }
+.page { padding:28px; max-width:1400px; }
+h1 { margin:0 0 16px; font-size:22px; } h2 { font-size:16px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:20px; }
+.card { box-shadow:0 1px 2px rgba(16,24,40,.06); background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; }
+.card .n { font-size:28px; font-weight:700; } .card .t { color:var(--muted); }
+.tablewrap { overflow:auto; max-height:70vh; background:var(--surface); border:1px solid var(--border); border-radius:12px; }
+table { width:100%; border-collapse:collapse; }
+th { font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); position:sticky; top:0; background:var(--surface); text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); cursor:pointer; white-space:nowrap; }
+td { padding:12px; border-bottom:1px solid var(--border); }
+tr:hover td { background:color-mix(in srgb, var(--primary) 6%, transparent); }
+input, select, textarea { font:inherit; padding:8px 10px; border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--text); }
+button { font:inherit; font-weight:500; padding:8px 14px; transition:background .15s,border-color .15s; border-radius:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); cursor:pointer; }
+button.primary { background:var(--primary); color:#fff; border-color:var(--primary); }
+button.danger { color:var(--bad); border-color:var(--bad); }
+button:hover:not(:disabled) { border-color:var(--primary); }
+button.primary:hover:not(:disabled) { filter:brightness(1.08); }
+input:focus, select:focus, textarea:focus { outline:2px solid color-mix(in srgb,var(--primary) 50%,transparent); border-color:var(--primary); }
+button:disabled { opacity:.5; cursor:not-allowed; }
+.row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px; }
+.badge { padding:2px 10px; border-radius:99px; font-size:12px; font-weight:600; background:var(--border); }
+.badge.submitted { background:#fff3d6; color:var(--warn); } .badge.approved { background:#d9f3e4; color:var(--ok); }
+.badge.returned { background:#fde0e0; color:var(--bad); } .badge.draft { background:var(--border); color:var(--muted); }
+.err { color:var(--bad); } .muted { color:var(--muted); }
+.login { max-width:360px; margin:12vh auto; display:flex; flex-direction:column; gap:12px; }
+.login .card { display:flex; flex-direction:column; gap:12px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.split { display:grid; grid-template-columns:1fr 340px; gap:20px; align-items:start; }
+.phone { border:8px solid var(--navy); border-radius:28px; padding:12px; background:var(--surface); min-height:420px; position:sticky; top:80px; }
+.item { border:1px solid var(--border); border-radius:10px; padding:10px; margin-bottom:8px; }
+.seg { display:flex; gap:4px; margin-top:6px; } .seg span { flex:1; text-align:center; padding:6px; border:1px solid var(--border); border-radius:8px; font-size:12px; }
+.modal { position:fixed; inset:0; background:rgba(0,0,0,.5); display:grid; place-items:center; z-index:20; }
+.modal > div, .modal > form { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:24px; width:min(560px,92vw); display:flex; flex-direction:column; gap:14px; max-height:90vh; overflow:auto; box-shadow:0 20px 50px rgba(0,0,0,.35); }
+.modal h2 { margin:0; font-size:18px; }
+.field { display:flex; flex-direction:column; gap:4px; }
+.field > span { font-weight:600; font-size:13px; }
+.field input, .field select, .field textarea { width:100%; }
+.field .hint { color:var(--muted); font-size:12px; }
+.field .error { color:var(--bad); font-size:12px; }
+.field input.invalid, .field select.invalid { border-color:var(--bad); }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.form-grid .full { grid-column:1 / -1; }
+.alert { padding:10px 14px; border-radius:10px; margin:0 0 14px; border:1px solid; }
+.alert.ok { background:color-mix(in srgb,var(--ok) 12%,transparent); border-color:var(--ok); }
+.alert.error { background:color-mix(in srgb,var(--bad) 12%,transparent); border-color:var(--bad); color:var(--bad); }
+.actions { display:flex; gap:8px; justify-content:flex-end; margin-top:4px; }
+@media (max-width:600px){ .form-grid { grid-template-columns:1fr; } }
+.photos img { width:110px; height:110px; object-fit:cover; border-radius:8px; margin-right:6px; cursor:zoom-in; }
+.flag { outline:2px solid var(--bad); }
+@media (max-width: 1024px) { .side { width:64px; } .side .lbl { display:none; } .split { grid-template-columns:1fr; } }
+@media print { .side, .top, button, .noprint { display:none !important; } .page { padding:0; } }
+
+/* Print always uses a light theme (dark-mode text would be unreadable on paper) */
+@media print {
+  :root { --bg:#fff; --surface:#fff; --text:#000; --muted:#444; --border:#ccc; }
+  body { background:#fff !important; color:#000 !important; }
+  .card, .item { break-inside:avoid; box-shadow:none; }
+  img { max-width:100%; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+}

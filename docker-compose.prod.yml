@@ -1,0 +1,27 @@
+# Overlay for a real Firebase project. Values come from .env (see .env.example).
+# Deploy rules/functions separately:  cd firebase && firebase deploy --project $FIREBASE_PROJECT_ID
+services:
+  firebase:
+    profiles: ["emulator-only"]
+  backoffice:
+    depends_on: []
+    build:
+      args:
+        NEXT_PUBLIC_USE_EMULATORS: "false"
+        NEXT_PUBLIC_FIREBASE_API_KEY: ${FIREBASE_API_KEY}
+        NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${FIREBASE_AUTH_DOMAIN}
+        NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID}
+        NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${FIREBASE_STORAGE_BUCKET}
+        NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${FIREBASE_MESSAGING_SENDER_ID}
+        NEXT_PUBLIC_FIREBASE_APP_ID: ${FIREBASE_APP_ID}
+  mobile-web:
+    depends_on: []
+    build:
+      args:
+        USE_EMULATORS: "false"
+        FIREBASE_API_KEY: ${FIREBASE_API_KEY}
+        FIREBASE_AUTH_DOMAIN: ${FIREBASE_AUTH_DOMAIN}
+        FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID}
+        FIREBASE_STORAGE_BUCKET: ${FIREBASE_STORAGE_BUCKET}
+        FIREBASE_MESSAGING_SENDER_ID: ${FIREBASE_MESSAGING_SENDER_ID}
+        FIREBASE_APP_ID: ${FIREBASE_APP_ID}

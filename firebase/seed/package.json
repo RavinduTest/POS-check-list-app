@@ -1,0 +1,1 @@
+{ "name": "serp-seed", "private": true, "scripts": { "seed": "node seed.mjs" }, "dependencies": { "firebase-admin": "^12.7.0" } }
